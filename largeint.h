@@ -12,7 +12,7 @@ public:
       std::string decimal();                     // returns the decimal representation 
       bool operator<(const LargeInt&) const;     // comparison
       LargeInt operator+(const LargeInt&) const; // addition
-
+	LargeInt operator*(const LargeInt&) const; // multiplication	
 private:
       typedef unsigned long long int basetype;
 
@@ -24,7 +24,7 @@ private:
       LargeInt add_abs_values(const LargeInt&) const;   // add absolute values
       LargeInt sub_abs_values(const LargeInt&) const;   // subtract absolute values
       LargeInt();                                // default constructor (private!)
-
+	
       bool _negative;
       std::vector<basetype> _v;      
 };

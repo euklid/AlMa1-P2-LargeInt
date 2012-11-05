@@ -155,3 +155,12 @@ LargeInt LargeInt::operator+(const LargeInt& arg) const        // addition
       return result;
 }
 
+LargeInt LargeInt::operator*(const LargeInt& arg) const	// multiplication
+{
+	LargeInt result;
+	result._negative=((_negative && arg._negative) || (!(_negative && arg._negative))); // you can try it out: this always get the right sign of the result
+	// now we only have to take care of the multiplication of the absolute values and at the end we will assign the right sign
+	basetype mulcarry; // needed for multiplication to store the carry of actual elemental multiplication
+	
+}
+
