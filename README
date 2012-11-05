@@ -1,0 +1,5 @@
+This program is supposed to do some basic math like absolute value, comparison, addition, subtraction and, that is our homework, multiplication on arbitrary, depending on free memory..., integers.
+The new implemented multiplication in the library largeint.h is used to accelerate computing the faculty of a number. 
+The naive implementation just uses additions and is supposed to be improved.
+
+The original sources can be found on http://www.or.uni-bonn.de/~vygen/lectures/alma1ws12.html
