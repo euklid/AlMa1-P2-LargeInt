@@ -158,9 +158,16 @@ LargeInt LargeInt::operator+(const LargeInt& arg) const        // addition
 LargeInt LargeInt::operator*(const LargeInt& arg) const	// multiplication
 {
 	LargeInt result;
-	result._negative=((_negative && arg._negative) || (!(_negative && arg._negative))); // you can try it out: this always get the right sign of the result
+	std::vector<LargeInt> sums(arg._v.size()); // initializes vector for empty summands: in school multiplication method : this * arg ==> length(arg) sums
+	result._negative=((_negative && arg._negative) || (!(_negative && arg._negative))); // you can try it out: this always gets the right sign of the result
 	// now we only have to take care of the multiplication of the absolute values and at the end we will assign the right sign
 	basetype mulcarry; // needed for multiplication to store the carry of actual elemental multiplication
-	
+	for(int i=0; i<arg._v.size(); i++) // here we start the multiplication like we learned in school
+	{
+		for(int j=0; j<i; j++) // add trailing zeros
+		{
+			sums._v.push_back(0);
+		}
+	}	
 }
 
