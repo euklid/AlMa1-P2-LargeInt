@@ -159,7 +159,7 @@ LargeInt LargeInt::operator*(const LargeInt& arg) const	// multiplication
 {
 	LargeInt result(0); //construct and initialize result
 	//std::vector<LargeInt> sums(arg._v.size()); // initializes vector for empty summands: in school multiplication method : this * arg ==> length(arg) sums
-	result._negative=((_negative && arg._negative) || (!(_negative && arg._negative))); // you can try it out: this always gets the right sign of the result
+	result._negative=((!(_negative && arg._negative)) && (_negative || arg._negative)); // you can try it out: this always gets the right sign of the result
 	// now we only have to take care of the multiplication of the absolute values and at the end we will assign the right sign
 	basetype mulcarry; // needed for multiplication to store the carry of actual elemental multiplication
 	basetype eleproduct; //product of elemental multiplication
