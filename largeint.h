@@ -12,7 +12,7 @@ public:
       std::string decimal();                     // returns the decimal representation 
       bool operator<(const LargeInt&) const;     // comparison
       LargeInt operator+(const LargeInt&) const; // addition
-	LargeInt operator*(const LargeInt&) const; // multiplication	
+      LargeInt operator*(const LargeInt&) const; // multiplication	
 private:
       typedef unsigned long long int basetype;
 
