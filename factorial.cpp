@@ -21,6 +21,19 @@ LargeInt factorial(LargeInt::inputtype n)        // computes n!
       return result;
 }
 
+LargeInt fasterFactorial(LargeInt::inputtype n)
+{
+	LargeInt result(1);
+	LargeInt one(1);
+	LargeInt factor(1);
+	if(n<=1) return one;
+	for(LargeInt::inputtype i=1; i<n; i++)
+	{
+		factor=factor+one;
+		result=result*factor;
+	}
+	return result;	
+}
       
 int main()
 {   
@@ -32,7 +45,7 @@ int main()
       std::cout << "Enter a natural number n: ";
       std::cin >> n;
       
-      std::cout << n << "! = " << factorial(n).decimal() << "\n";
+      std::cout << n << "! = " << fasterFactorial(n).decimal() << "\n";
       return 0;
 }
 
