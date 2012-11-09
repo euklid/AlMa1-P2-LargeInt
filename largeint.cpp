@@ -157,17 +157,30 @@ LargeInt LargeInt::operator+(const LargeInt& arg) const        // addition
 
 LargeInt LargeInt::operator*(const LargeInt& arg) const	// multiplication
 {
-	LargeInt result;
-	std::vector<LargeInt> sums(arg._v.size()); // initializes vector for empty summands: in school multiplication method : this * arg ==> length(arg) sums
+	LargeInt result(0); //construct and initialize result
+	//std::vector<LargeInt> sums(arg._v.size()); // initializes vector for empty summands: in school multiplication method : this * arg ==> length(arg) sums
 	result._negative=((_negative && arg._negative) || (!(_negative && arg._negative))); // you can try it out: this always gets the right sign of the result
 	// now we only have to take care of the multiplication of the absolute values and at the end we will assign the right sign
 	basetype mulcarry; // needed for multiplication to store the carry of actual elemental multiplication
+	basetype eleproduct; //product of elemental multiplication
 	for(int i=0; i<arg._v.size(); i++) // here we start the multiplication like we learned in school
 	{
-		for(int j=0; j<i; j++) // add trailing zeros
+		LargeInt summand;
+		for(int j=0; j<i; j++) // add trailing zeros ; 0<0 is false therefore for the first multiplication everything goes right, rest is indunction over i
 		{
-			sums._v.push_back(0);
+			summand._v.push_back(0);
 		}
-	}	
+		mulcarry=0;
+		for(int j=0; j<this._v.size();j++)
+		{
+			eleproduct=(arg._v[i]*this._v[j]+mulcarry)%basis;
+			summand._v.push_back(eleproduct);
+			mulcarry=eleproduct/basis; // It's like multiplicating with pencil and paper
+		}
+		if(mulcarry > 0 summand._v.push_back(mulcarry); //if there is carry>0 it won't be assigned at the end of 
+														//the for-loop, so we have to do it seperate here
+		result=result+summand; //we add the summands to our result and then they are destroyed, this overloaded operator was already defined
+	}
+	return result; //now it should work...  		
 }
 
