@@ -171,13 +171,13 @@ LargeInt LargeInt::operator*(const LargeInt& arg) const	// multiplication
 			summand._v.push_back(0);
 		}
 		mulcarry=0;
-		for(int j=0; j<this._v.size();j++)
+		for(int j=0; j<_v.size();j++)
 		{
-			eleproduct=(arg._v[i]*this._v[j]+mulcarry)%basis;
-			summand._v.push_back(eleproduct);
+			eleproduct=arg._v[i]*_v[j]+mulcarry;
+			summand._v.push_back(eleproduct%basis);
 			mulcarry=eleproduct/basis; // It's like multiplicating with pencil and paper
 		}
-		if(mulcarry > 0 summand._v.push_back(mulcarry); //if there is carry>0 it won't be assigned at the end of 
+		if(mulcarry > 0) summand._v.push_back(mulcarry); //if there is carry>0 it won't be assigned at the end of 
 														//the for-loop, so we have to do it seperate here
 		result=result+summand; //we add the summands to our result and then they are destroyed, this overloaded operator was already defined
 	}
